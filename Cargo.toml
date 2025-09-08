@@ -1,0 +1,38 @@
+[workspace]
+resolver = "2"
+members = ["examples", "veecle-freertos-integration", "veecle-freertos-sys"]
+exclude = ["target"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+license = "MIT"
+rust-version = "1.89.0"
+repository = "https://github.com/veecle/freertos-integration"
+
+[workspace.dependencies]
+anyhow = { version = "1.0.99", default-features = false }
+atomic-waker = { version = "1.1.2", default-features = false }
+bindgen = { version = "0.72.1", default-features = false }
+cc = { version = "1.2.35", default-features = false }
+futures = { version = "0.3.31", default-features = false }
+libtest-mimic = { version = "0.8.1", default-features = false }
+macro_rules_attribute = { version = "0.2.2", default-features = false }
+regex = { version = "1.11.2", default-features = false }
+veecle-freertos-integration = { path = "veecle-freertos-integration", default-features = false, version = "0.0.1" }
+veecle-freertos-sys = { path = "veecle-freertos-sys", default-features = false, version = "0.0.1" }
+walkdir = { version = "2.5.0", default-features = false }
+
+[workspace.lints.rust]
+missing_debug_implementations = "warn"
+missing_docs = "warn"
+unexpected_cfgs = { level = "warn", check-cfg = [
+  'cfg(coverage,coverage_nightly)',
+] }
+unsafe_op_in_unsafe_fn = "deny"
+unsafe_attr_outside_unsafe = "deny"
+
+[workspace.lints.clippy]
+module_inception = "allow"          # bad lint https://github.com/rust-lang/rust-clippy/issues/13259
+undocumented_unsafe_blocks = "warn"
+alloc_instead_of_core = "warn"

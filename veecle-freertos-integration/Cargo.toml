@@ -1,0 +1,251 @@
+[package]
+name = "veecle-freertos-integration"
+description = "Rust wrapper for FreeRTOS"
+license.workspace = true
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+publish = true
+
+[lints]
+workspace = true
+
+[lib]
+name = "freertos_rust"
+path = "src/lib.rs"
+doctest = false
+
+[features]
+default = ["link-freertos"]
+
+# Links (and builds, depending on env-vars) the FreeRTOS library.
+# When using this crate to build a static library for inclusion in a C project, it can be necessary to
+# disable this feature to only link the freertos library in the final linking stage in the C project.
+link-freertos = ["veecle-freertos-sys/link-freertos"]
+
+# Provides an unmangled function with the prototype:
+#
+# ```c
+# /// `filename` must point to a valid zero-terminated C string (or be null),
+# /// it will only be read from during this function call.
+# extern void vAssertCalled(
+#     const char *const filename,
+#     unsigned long line,
+# );
+# ```
+#
+# By activating this feature you must ensure that this function is called correctly from all other linked code.
+unsafe-hooks-assert = []
+
+[dependencies]
+atomic-waker = { workspace = true }
+veecle-freertos-sys = { workspace = true }
+
+[build-dependencies]
+regex = { workspace = true }
+
+[dev-dependencies]
+# Force activate own-features required for unit tests
+futures = { workspace = true }
+libtest-mimic = { workspace = true }
+macro_rules_attribute = { workspace = true }
+veecle-freertos-integration = { workspace = true, features = [
+  # SAFETY: we use the same prototype in `FreeRTOSConfig.h` as required by this feature.
+  "unsafe-hooks-assert",
+] }
+
+[[test]]
+name = "allocator_box"
+harness = false
+
+[[test]]
+name = "allocator_string"
+harness = false
+
+[[test]]
+name = "assert_hook"
+harness = false
+
+[[test]]
+name = "delays"
+harness = false
+
+[[test]]
+name = "queue_async_blocking"
+harness = false
+
+[[test]]
+name = "queue_async_messages_waiting"
+harness = false
+
+[[test]]
+name = "queue_async_receive_no_send"
+harness = false
+
+[[test]]
+name = "queue_async_send_exceed_max_capacity"
+harness = false
+
+[[test]]
+name = "queue_async_send_from_isr"
+harness = false
+
+[[test]]
+name = "queue_async_send_from_isr_exceed_max_capacity"
+harness = false
+
+[[test]]
+name = "queue_async_to_blocking"
+harness = false
+
+[[test]]
+name = "queue_blocking_to_async"
+harness = false
+
+[[test]]
+name = "queue_failed_allocation"
+harness = false
+
+[[test]]
+name = "queue_messages_waiting"
+harness = false
+
+[[test]]
+name = "queue_raw"
+harness = false
+
+[[test]]
+name = "queue_receive_no_send"
+harness = false
+
+[[test]]
+name = "queue_send_exceed_max_capacity"
+harness = false
+
+[[test]]
+name = "queue_send_from_isr"
+harness = false
+
+[[test]]
+name = "queue_send_from_isr_exceed_max_capacity"
+harness = false
+
+[[test]]
+name = "queue_send_receive"
+harness = false
+
+[[test]]
+name = "queue_spaces_available"
+harness = false
+
+[[test]]
+name = "queues"
+harness = false
+
+[[test]]
+name = "scheduler_tick_count"
+harness = false
+
+[[test]]
+name = "scheduler_tick_count_duration"
+harness = false
+
+[[test]]
+name = "self-check"
+harness = true
+
+[[test]]
+name = "task_closure_get_name"
+harness = false
+
+[[test]]
+name = "task_curent_not_found"
+harness = false
+
+[[test]]
+name = "task_current_get_name"
+harness = false
+
+[[test]]
+name = "task_get_name"
+harness = false
+
+[[test]]
+name = "task_id"
+harness = false
+
+[[test]]
+name = "task_notification_value"
+harness = false
+
+[[test]]
+name = "task_notify"
+harness = false
+
+[[test]]
+name = "task_notify_from_isr"
+harness = false
+
+[[test]]
+name = "task_notify_increment"
+harness = false
+
+[[test]]
+name = "task_notify_no_action"
+harness = false
+
+[[test]]
+name = "task_notify_set_bits"
+harness = false
+
+[[test]]
+name = "task_raw"
+harness = false
+
+[[test]]
+name = "task_stack"
+harness = false
+
+[[test]]
+name = "task_start"
+harness = false
+
+[[test]]
+name = "task_wait_for_notification"
+harness = false
+
+[[test]]
+name = "task_wait_for_notification_timeout"
+harness = false
+
+[[test]]
+name = "timers_change_period"
+harness = false
+
+[[test]]
+name = "timers_change_period_zero_duration"
+harness = false
+
+[[test]]
+name = "timers_once"
+harness = false
+
+[[test]]
+name = "timers_periodic"
+harness = false
+
+[[test]]
+name = "timers_start_from_isr"
+harness = false
+
+[[test]]
+name = "timers_stop"
+harness = false
+
+[[test]]
+name = "timers_zero_duration"
+harness = false
+
+[[test]]
+name = "units"
+harness = false

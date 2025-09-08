@@ -1,0 +1,53 @@
+name: 'Cargo Install with Cache'
+description: 'Install a cargo tool with binary caching.'
+inputs:
+  tool:
+    description: 'The cargo package name to install (e.g., taplo-cli).'
+    required: true
+  binary:
+    description: 'The binary name (e.g., taplo). Defaults to tool name if not specified.'
+    required: false
+    default: ''
+  version:
+    description: 'The version of the tool to install.'
+    required: true
+  toolchain:
+    description: 'The Rust toolchain to use (see "dtolnay/rust-toolchain" for possible inputs).'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set binary name
+      id: binary-name
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.binary }}" ]; then
+          echo "name=${{ inputs.binary }}" >> $GITHUB_OUTPUT
+        else
+          echo "name=${{ inputs.tool }}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Install Rust toolchain
+      if: inputs.toolchain != ''
+      uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: ${{ inputs.toolchain }}
+
+    - name: Cache ${{ steps.binary-name.outputs.name }} binary
+      uses: actions/cache@v4
+      id: tool-cache
+      with:
+        path: ~/.cargo/bin/${{ steps.binary-name.outputs.name }}
+        key: ${{ runner.os }}-${{ inputs.tool }}-${{ inputs.binary-name }}-${{ inputs.version }}-${{ inputs.toolchain }}
+
+    - name: Install ${{ inputs.tool }}
+      if: steps.tool-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.toolchain }}" ]; then
+          cargo +${{ inputs.toolchain }} install ${{ inputs.tool }} --locked --version ${{ inputs.version }}
+        else
+          cargo install ${{ inputs.tool }} --locked --version ${{ inputs.version }}
+        fi

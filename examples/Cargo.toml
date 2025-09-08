@@ -1,0 +1,13 @@
+[package]
+name = "examples"
+license.workspace = true
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+veecle-freertos-integration = { path = "../veecle-freertos-integration", default-features = false, features = [
+  "link-freertos",
+  # SAFETY: we use the same prototype in `FreeRTOSConfig.h` as required by this feature.
+  "unsafe-hooks-assert",
+] }

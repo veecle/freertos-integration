@@ -1,0 +1,27 @@
+[package]
+name = "veecle-freertos-sys"
+description = "Rust bindings for FreeRTOS"
+links = "freertos"
+license.workspace = true
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+publish = true
+
+[lints]
+workspace = true
+
+[features]
+default = ["link-freertos"]
+# Links (and builds, depending on env-vars) the FreeRTOS library.
+# When using this crate to build a static library for inclusion in a C project, it can be necessary to
+# disable this feature to only link the freertos library in the final linking stage in the C project.
+link-freertos = []
+
+[dependencies]
+
+[build-dependencies]
+anyhow = { workspace = true }
+bindgen = { features = ["prettyplease", "runtime"], workspace = true }
+cc = { workspace = true }
+walkdir = { workspace = true }

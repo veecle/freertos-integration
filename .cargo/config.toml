@@ -1,0 +1,5 @@
+[env]
+FREERTOS_CONFIG_INCLUDE_PATH = { value = "", relative = true }
+
+FREERTOS_KERNEL_INCLUDE_PATH = { value = "FreeRTOS-Kernel/include", relative = true }
+FREERTOS_HEAP_FILE_PATH = { value = "FreeRTOS-Kernel/portable/MemMang/heap_4.c", relative = true }
