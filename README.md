@@ -22,7 +22,7 @@ The currently supported FreeRTOS version is: [`V11.2.0`][freertos_version].
 
 ### Submodules
 
-This projects uses Git submodules, which are required to run tests and others.
+This projects uses Git submodules, which are required to run tests.
 You can run `git submodule update --init` to fetch the submodules.
 
 ### Features
