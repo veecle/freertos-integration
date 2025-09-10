@@ -16,7 +16,7 @@ The `veecle-freertos-integration` crate generates bindings to the configured (se
 
 The currently supported FreeRTOS version is: [`V11.2.0`][freertos_version].
 
-[freertos_version]: https://github.com/FreeRTOS/FreeRTOS-Kernel/releases/tag/V11.1.0
+[freertos_version]: https://github.com/FreeRTOS/FreeRTOS-Kernel/releases/tag/V11.2.0
 
 ## Usage
 
