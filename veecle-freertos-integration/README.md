@@ -41,7 +41,7 @@ Refer to [the FreeRTOS customization page][FreeRTOS-customization] to learn how 
 ### Rust compiler errors
 
 If the program uses bindings from the `veecle-freertos-sys` crate that has been excluded, then compiling fails with Rust errors.
-The `freertos-sys` crate generates the Rust bindings for FreeRTOS based on the `FreeRTOSConfig.h` file.
+The `veecle-freertos-sys` crate generates the Rust bindings for FreeRTOS based on the `FreeRTOSConfig.h` file.
 Make sure everything is properly configured so none of the required bindings gets excluded.
 
 [FreeRTOS-customization]: https://www.freertos.org/Documentation/02-Kernel/03-Supported-devices/02-Customization
