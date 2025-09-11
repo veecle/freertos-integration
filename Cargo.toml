@@ -1,6 +1,10 @@
 [workspace]
 resolver = "2"
-members = ["examples", "veecle-freertos-integration", "veecle-freertos-sys"]
+members = [
+  "veecle-freertos-examples",
+  "veecle-freertos-integration",
+  "veecle-freertos-sys",
+]
 exclude = ["target"]
 
 [workspace.package]
