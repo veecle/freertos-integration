@@ -2,7 +2,7 @@
 
 pub mod common;
 
-use freertos_rust::Duration;
+use veecle_freertos_integration::Duration;
 
 #[common::apply(common::test)]
 fn units() {

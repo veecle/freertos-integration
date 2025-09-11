@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::scheduler::get_tick_count_duration;
+use veecle_freertos_integration::scheduler::get_tick_count_duration;
 use veecle_freertos_sys::bindings::vTaskDelay;
 
 pub mod common;

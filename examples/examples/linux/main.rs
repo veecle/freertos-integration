@@ -1,5 +1,5 @@
 //! A basic veecle-freertos-integration example for Linux.
-use freertos_rust::*;
+use veecle_freertos_integration::*;
 
 // SAFETY: We don't use any non-FreeRTOS threads.
 #[global_allocator]
@@ -40,7 +40,7 @@ fn main() {
     println!("Task registered");
 
     println!("Starting scheduler");
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
     #[allow(unreachable_code)]
     loop {
         println!("Loop forever!");

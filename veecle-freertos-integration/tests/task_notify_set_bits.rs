@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Duration, TaskNotification};
+use veecle_freertos_integration::{CurrentTask, Duration, TaskNotification};
 
 use crate::common::start_task;
 
@@ -21,5 +21,5 @@ fn task_notify_set_bits() {
     task.notify(TaskNotification::SetBits(BITS_A));
     task.notify(TaskNotification::SetBits(BITS_B));
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

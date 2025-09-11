@@ -1,7 +1,7 @@
 #![expect(missing_docs)]
 
-use freertos_rust::channel;
 use futures::FutureExt;
+use veecle_freertos_integration::channel;
 
 pub mod common;
 

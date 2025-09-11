@@ -3,7 +3,7 @@
 use std::sync::atomic::AtomicUsize;
 use std::sync::atomic::Ordering::{AcqRel, Acquire};
 
-use freertos_rust::{Duration, Timer};
+use veecle_freertos_integration::{Duration, Timer};
 
 pub mod common;
 

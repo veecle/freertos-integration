@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{FreeRtosError, Task};
+use veecle_freertos_integration::{FreeRtosError, Task};
 
 pub mod common;
 

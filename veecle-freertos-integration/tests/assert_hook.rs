@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::Task;
+use veecle_freertos_integration::Task;
 
 pub mod common;
 
@@ -12,7 +12,7 @@ pub mod common;
 fn assert_hook() {
     Task::new()
         .start(|_| {
-            freertos_rust::hooks::set_on_assert(|file_name, line| {
+            veecle_freertos_integration::hooks::set_on_assert(|file_name, line| {
                 assert!(file_name.contains("/veecle-freertos-sys/macro-shim.h"));
                 assert_eq!(line, 33);
 
@@ -26,5 +26,5 @@ fn assert_hook() {
         })
         .unwrap();
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

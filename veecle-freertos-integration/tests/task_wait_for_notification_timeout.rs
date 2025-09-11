@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{Duration, FreeRtosError};
+use veecle_freertos_integration::{Duration, FreeRtosError};
 
 use crate::common::start_task;
 
@@ -18,5 +18,5 @@ fn task_wait_for_notification() {
         common::end_scheduler();
     });
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

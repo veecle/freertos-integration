@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::Task;
+use veecle_freertos_integration::Task;
 
 pub mod common;
 
@@ -15,5 +15,5 @@ fn task_closure_get_name() {
         })
         .unwrap();
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

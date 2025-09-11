@@ -1,5 +1,5 @@
-use freertos_rust::{FreeRtosAllocator, Task};
 pub use macro_rules_attribute::apply;
+use veecle_freertos_integration::{FreeRtosAllocator, Task};
 
 #[macro_export]
 /// An alternative to the `libtest::test` macro that uses `libtest-mimic` to run a single single-threaded test.
@@ -51,7 +51,7 @@ pub fn run_freertos_test(to_test_fn: impl FnOnce() + Send + 'static) {
         })
         .unwrap();
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }
 
 /// Safe wrapper for [`vTaskEndScheduler`](veecle_freertos_sys::bindings::vTaskEndScheduler) for tests only.

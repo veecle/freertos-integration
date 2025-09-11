@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Duration, InterruptContext, Queue, Task};
+use veecle_freertos_integration::{CurrentTask, Duration, InterruptContext, Queue, Task};
 
 pub mod common;
 

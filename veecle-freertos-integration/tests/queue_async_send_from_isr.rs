@@ -1,7 +1,9 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Duration, InterruptContext, Task, TaskPriority, channel};
 use futures::FutureExt;
+use veecle_freertos_integration::{
+    CurrentTask, Duration, InterruptContext, Task, TaskPriority, channel,
+};
 
 pub mod common;
 

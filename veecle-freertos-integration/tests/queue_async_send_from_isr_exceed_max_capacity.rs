@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{InterruptContext, channel};
+use veecle_freertos_integration::{InterruptContext, channel};
 
 pub mod common;
 
