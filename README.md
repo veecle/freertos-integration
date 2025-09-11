@@ -85,7 +85,7 @@ For the ARM architecture this is the [`arm-none-eabi-gcc`][arm_compiler].
 
 ## Examples
 
-To get started there is an example in [examples](examples).
+To get started there is an example in [examples](veecle-freertos-examples).
 
 ## License
 
