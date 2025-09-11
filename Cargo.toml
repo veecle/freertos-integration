@@ -4,7 +4,7 @@ members = ["examples", "veecle-freertos-integration", "veecle-freertos-sys"]
 exclude = ["target"]
 
 [workspace.package]
-version = "0.0.1"
+version = "0.1.0"
 edition = "2024"
 license = "MIT"
 rust-version = "1.89.0"
@@ -19,8 +19,8 @@ futures = { version = "0.3.31", default-features = false }
 libtest-mimic = { version = "0.8.1", default-features = false }
 macro_rules_attribute = { version = "0.2.2", default-features = false }
 regex = { version = "1.11.2", default-features = false }
-veecle-freertos-integration = { path = "veecle-freertos-integration", default-features = false, version = "0.0.1" }
-veecle-freertos-sys = { path = "veecle-freertos-sys", default-features = false, version = "0.0.1" }
+veecle-freertos-integration = { path = "veecle-freertos-integration", default-features = false, version = "0.1.0" }
+veecle-freertos-sys = { path = "veecle-freertos-sys", default-features = false, version = "0.1.0" }
 walkdir = { version = "2.5.0", default-features = false }
 
 [workspace.lints.rust]
