@@ -1,7 +1,9 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{AsyncToBlockingQueueTaskBuilder, Duration, Queue, Task, TaskPriority};
 use futures::FutureExt;
+use veecle_freertos_integration::{
+    AsyncToBlockingQueueTaskBuilder, Duration, Queue, Task, TaskPriority,
+};
 
 pub mod common;
 
@@ -20,7 +22,7 @@ fn queue_async_to_blocking() {
         .start(move |_| {
             assert_eq!(async_to_blocking.send(()).now_or_never(), Some(()));
 
-            freertos_rust::CurrentTask::delay(Duration::infinite());
+            veecle_freertos_integration::CurrentTask::delay(Duration::infinite());
         })
         .unwrap();
 

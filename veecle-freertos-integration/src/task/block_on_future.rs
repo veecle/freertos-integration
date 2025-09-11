@@ -55,18 +55,18 @@ mod waker {
 /// If run from outside a [`Task`].
 ///
 /// ```should_panic
-/// freertos_rust::task::block_on_future(async { 2 + 2 });
+/// veecle_freertos_integration::task::block_on_future(async { 2 + 2 });
 /// ```
 ///
 /// # Examples
 ///
 /// ```
-/// freertos_rust::Task::new().start(|_| {
-///     let result = freertos_rust::task::block_on_future(async { 2 + 2 });
+/// veecle_freertos_integration::Task::new().start(|_| {
+///     let result = veecle_freertos_integration::task::block_on_future(async { 2 + 2 });
 ///     assert_eq!(result, 4);
 ///     # unsafe { veecle_freertos_sys::bindings::vTaskEndScheduler() };
 /// });
-/// # freertos_rust::scheduler::start_scheduler();
+/// # veecle_freertos_integration::scheduler::start_scheduler();
 /// ```
 pub fn block_on_future<T>(future: impl Future<Output = T>) -> T {
     let task = Task::current().expect(

@@ -11,8 +11,6 @@ publish = true
 workspace = true
 
 [lib]
-name = "freertos_rust"
-path = "src/lib.rs"
 doctest = false
 
 [features]

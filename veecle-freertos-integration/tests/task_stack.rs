@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Task};
+use veecle_freertos_integration::{CurrentTask, Task};
 use veecle_freertos_sys::bindings::StackType_t;
 
 pub mod common;
@@ -26,5 +26,5 @@ fn task_stack() {
         })
         .unwrap();
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

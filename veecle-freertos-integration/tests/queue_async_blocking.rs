@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{
+use veecle_freertos_integration::{
     AsyncToBlockingQueueTaskBuilder, BlockingToAsyncQueueTaskBuilder, Duration, Queue, Task,
 };
 
@@ -23,7 +23,7 @@ fn queue_async() {
                 .send_blocking((), Duration::from_ms(1000))
                 .expect("message to be sent");
 
-            freertos_rust::CurrentTask::delay(Duration::infinite());
+            veecle_freertos_integration::CurrentTask::delay(Duration::infinite());
         })
         .unwrap();
 

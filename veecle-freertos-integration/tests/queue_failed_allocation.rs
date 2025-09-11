@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{FreeRtosError, Queue, UBaseType_t};
+use veecle_freertos_integration::{FreeRtosError, Queue, UBaseType_t};
 
 pub mod common;
 

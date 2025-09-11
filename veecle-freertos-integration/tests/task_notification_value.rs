@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Duration};
+use veecle_freertos_integration::{CurrentTask, Duration};
 
 use crate::common::start_task;
 
@@ -19,5 +19,5 @@ fn task_set_notification_value() {
 
     task.set_notification_value(NOTIFICATION_VALUE);
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

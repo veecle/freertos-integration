@@ -2,7 +2,7 @@
 
 use std::sync::atomic::{AtomicBool, Ordering};
 
-use freertos_rust::Task;
+use veecle_freertos_integration::Task;
 
 pub mod common;
 
@@ -18,7 +18,7 @@ fn task_start() {
         })
         .unwrap();
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 
     assert!(STARTED.load(Ordering::Acquire));
 }

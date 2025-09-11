@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::Queue;
+use veecle_freertos_integration::Queue;
 
 pub mod common;
 

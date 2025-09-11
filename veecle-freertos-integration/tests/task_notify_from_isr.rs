@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::{CurrentTask, Duration, InterruptContext, TaskNotification};
+use veecle_freertos_integration::{CurrentTask, Duration, InterruptContext, TaskNotification};
 
 use crate::common::start_task;
 
@@ -30,5 +30,5 @@ fn task_notify_from_isr() {
         CurrentTask::suspend();
     });
 
-    freertos_rust::scheduler::start_scheduler();
+    veecle_freertos_integration::scheduler::start_scheduler();
 }

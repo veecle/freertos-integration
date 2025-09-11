@@ -3,7 +3,7 @@
 use std::sync::atomic::AtomicBool;
 use std::sync::atomic::Ordering::{Acquire, Release};
 
-use freertos_rust::{Duration, InterruptContext, Timer};
+use veecle_freertos_integration::{Duration, InterruptContext, Timer};
 use veecle_freertos_sys::bindings::pdTRUE;
 
 pub mod common;

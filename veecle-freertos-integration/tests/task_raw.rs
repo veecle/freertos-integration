@@ -1,6 +1,6 @@
 #![expect(missing_docs)]
 
-use freertos_rust::Task;
+use veecle_freertos_integration::Task;
 
 pub mod common;
 
