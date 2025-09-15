@@ -81,6 +81,48 @@ impl ParseCallbacks for FunctionRenames {
 }
 
 fn main() -> Result<()> {
+    if env::var("DOCS_RS").as_deref() == Ok("1") {
+        println!(
+            "cargo::warning=docs.rs detected, using pre-generated bindings to avoid needing FreeRTOS code"
+        );
+
+        let in_path = PathBuf::from(env::var("CARGO_MANIFEST_PATH")?)
+            .parent()
+            .unwrap()
+            .join("src/posix-sample-bindings.rs");
+        let out_dir = PathBuf::from(env::var("OUT_DIR")?);
+        let bindings_out_path = out_dir.join("bindings.rs");
+
+        fs::create_dir_all(&out_dir)?;
+
+        fs::copy(&in_path, &bindings_out_path)?;
+
+        fs::write(
+            out_dir.join("warning.md"),
+            "\
+                Pre-generated sample bindings for docs.rs documentation.\n\
+                \n\
+                <div class=warning>\n\
+                \n\
+                These bindings were generated with a specific FreeRTOS configuration and may not match your target platform.\n\
+                Generate your own bindings by configuring the required environment variables for your project, then build them locally:\n\
+                \n\
+                ```sh\n\
+                cargo doc -p veecle-freertos-sys --no-deps --open\n\
+                ```\n\
+                \n\
+                </div>\n\
+            ",
+        )?;
+
+        println!(
+            "cargo::metadata={FREERTOS_BINDINGS_LOCATION_ENV_KEY}={}",
+            bindings_out_path.to_str().unwrap()
+        );
+
+        return Ok(());
+    }
+
     let freertos_kernel_include_path = read_env_var(FREERTOS_KERNEL_INCLUDE_PATH_ENV_KEY)?;
     println!("FreeRTOS kernel include path: {freertos_kernel_include_path}");
     let freertos_portmacro_path = {
