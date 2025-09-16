@@ -1,5 +1,7 @@
 # Next
 
+# 0.1.2
+
 * Fix docs.rs documentation build.
 
 # 0.1.1
