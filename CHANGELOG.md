@@ -1,5 +1,7 @@
 # Next
 
+* Fix docs.rs documentation build.
+
 # 0.1.1
 
 ## veecle-freertos-integration
