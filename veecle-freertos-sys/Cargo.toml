@@ -25,3 +25,6 @@ anyhow = { workspace = true }
 bindgen = { features = ["prettyplease", "runtime"], workspace = true }
 cc = { workspace = true }
 walkdir = { workspace = true }
+
+[dev-dependencies]
+similar-asserts = { workspace = true }

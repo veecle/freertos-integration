@@ -70,7 +70,7 @@ jobs:
         with:
           cache-on-failure: true
 
-      - run: cargo test --workspace --all-features --verbose
+      - run: cargo test --workspace --all-features --verbose -- --ignored
 
       - name: Check for uncommitted Cargo.lock changes
         run: |
@@ -95,6 +95,29 @@ jobs:
       - run: cargo doc --workspace --all-features --no-deps
         env:
           RUSTDOCFLAGS: "-D warnings"
+
+  docsrs:
+    runs-on: ubuntu-latest
+    steps:
+      # No submodules as we want to test that docs generate without FreeRTOS sources available.
+      - uses: actions/checkout@v5
+
+      - uses: dtolnay/rust-toolchain@nightly
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Install cargo-docs-rs
+        uses: ./.github/actions/cargo-install-cached
+        with:
+          tool: cargo-docs-rs
+          version: 0.1.17
+
+      - run: |
+          rm -r .cargo # Remove the environment variables related to FreeRTOS source.
+          cargo docs-rs -p veecle-freertos-sys
+          cargo docs-rs -p veecle-freertos-integration
 
   commits:
     runs-on: ubuntu-latest
@@ -136,6 +159,7 @@ jobs:
       - clippy
       - tests
       - docs
+      - docsrs
       - commits
       - yamllint
       - deny
