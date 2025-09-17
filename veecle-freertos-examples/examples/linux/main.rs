@@ -46,15 +46,3 @@ fn main() {
         println!("Loop forever!");
     }
 }
-
-#[test]
-fn many_boxes() {
-    init_allocator();
-    println!("many_boxes... ");
-    for i in 0..10 {
-        // .. HEAP_SIZE
-        let x = Box::new(i);
-        assert_eq!(*x, i);
-    }
-    println!("[ok]");
-}

@@ -70,7 +70,7 @@ jobs:
         with:
           cache-on-failure: true
 
-      - run: cargo test --workspace --all-features --verbose -- --ignored
+      - run: cargo test --workspace --all-targets --all-features --verbose -- --ignored
 
       - name: Check for uncommitted Cargo.lock changes
         run: |
