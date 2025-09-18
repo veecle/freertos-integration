@@ -10,7 +10,7 @@ Follow this workflow to ensure smooth review and integration.
 1. Browse existing work: Check [issues](https://github.com/veecle/freertos-integration/issues) to find tasks that need help.
 2. Discuss large changes: For significant features or architectural changes, open an issue to discuss the approach with maintainers.
 3. Claim your work: Comment on issues to indicate you're working on them to avoid duplicate effort.
-4. Read our guidelines: Familiarize yourself with the [Code of Conduct](https://github.com/veecle/freertos-integration?tab=coc-ov-file) and this contribution guide.
+4. Read our guidelines: Familiarize yourself with the [Code of Conduct](https://github.com/veecle/freertos-integration?tab=coc-ov-file#readme) and this contribution guide.
 
 ### Developer certificate of origin (DCO)
 
