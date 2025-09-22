@@ -26,7 +26,7 @@ jobs:
       actions: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: veecle/style-guide/.github/actions/claude-review@main
         with:
