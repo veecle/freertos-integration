@@ -2,7 +2,7 @@
 name = "veecle-freertos-integration"
 description = "Rust wrapper for FreeRTOS"
 license.workspace = true
-version.workspace = true
+version = "0.1.2"
 edition.workspace = true
 repository.workspace = true
 publish = true
