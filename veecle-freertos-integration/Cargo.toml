@@ -1,66 +1,23 @@
 [package]
 name = "veecle-freertos-integration"
-description = "Rust wrapper for FreeRTOS"
-license.workspace = true
 version = "0.1.2"
 edition.workspace = true
+description = "Rust wrapper for FreeRTOS"
 repository.workspace = true
+license.workspace = true
 publish = true
 
 [package.metadata.docs.rs]
 all-features = true
-
 default-target = "x86_64-unknown-linux-gnu"
 targets = []
-
-[lints]
-workspace = true
 
 [lib]
 doctest = false
 
-[features]
-default = ["link-freertos"]
-
-# Links (and builds, depending on env-vars) the FreeRTOS library.
-# When using this crate to build a static library for inclusion in a C project, it can be necessary to
-# disable this feature to only link the freertos library in the final linking stage in the C project.
-link-freertos = ["veecle-freertos-sys/link-freertos"]
-
-# Provides an unmangled function with the prototype:
-#
-# ```c
-# /// `filename` must point to a valid zero-terminated C string (or be null),
-# /// it will only be read from during this function call.
-# extern void vAssertCalled(
-#     const char *const filename,
-#     unsigned long line,
-# );
-# ```
-#
-# By activating this feature you must ensure that this function is called correctly from all other linked code.
-unsafe-hooks-assert = []
-
-[dependencies]
-atomic-waker = { workspace = true }
-veecle-freertos-sys = { workspace = true }
-
-[build-dependencies]
-regex = { workspace = true }
-
-[dev-dependencies]
-# Force activate own-features required for unit tests
-futures = { workspace = true }
-libtest-mimic = { workspace = true }
-macro_rules_attribute = { workspace = true }
-veecle-freertos-integration = { workspace = true, features = [
-  # SAFETY: we use the same prototype in `FreeRTOSConfig.h` as required by this feature.
-  "unsafe-hooks-assert",
-] }
-
 [[test]]
-name = "allocator_box"
 harness = false
+name = "allocator_box"
 
 [[test]]
 name = "allocator_string"
@@ -253,3 +210,43 @@ harness = false
 [[test]]
 name = "units"
 harness = false
+
+[dependencies]
+atomic-waker = { workspace = true }
+veecle-freertos-sys = { workspace = true }
+
+[dev-dependencies]
+futures = { workspace = true }
+libtest-mimic = { workspace = true }
+macro_rules_attribute = { workspace = true }
+# Force activate own-features required for unit tests
+veecle-freertos-integration = { workspace = true, features = [
+  # SAFETY: we use the same prototype in `FreeRTOSConfig.h` as required by this feature.
+  "unsafe-hooks-assert",
+] }
+
+[build-dependencies]
+regex = { workspace = true }
+
+[features]
+default = ["link-freertos"]
+# Links (and builds, depending on env-vars) the FreeRTOS library.
+# When using this crate to build a static library for inclusion in a C project, it can be necessary to
+# disable this feature to only link the freertos library in the final linking stage in the C project.
+link-freertos = ["veecle-freertos-sys/link-freertos"]
+# Provides an unmangled function with the prototype:
+#
+# ```c
+# /// `filename` must point to a valid zero-terminated C string (or be null),
+# /// it will only be read from during this function call.
+# extern void vAssertCalled(
+#     const char *const filename,
+#     unsigned long line,
+# );
+# ```
+#
+# By activating this feature you must ensure that this function is called correctly from all other linked code.
+unsafe-hooks-assert = []
+
+[lints]
+workspace = true

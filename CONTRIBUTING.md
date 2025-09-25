@@ -23,7 +23,8 @@ Refer to [the Developer Certificate of Origin GitHub app](https://probot.github.
 
 1. Make your changes and test them with:
    - `cargo test` and `cargo clippy` at the workspace root will check Rust code.
-   - [`taplo fmt`](https://github.com/tamasfe/taplo) will format `.toml` files.
+   - [`tombi format`](https://github.com/tombi-toml/tombi) will format `.toml` files.
+     `tombi lint` will lint `.toml` files.
 2. Commit with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
    We use squash-merge with the PR title and description as commit title and message.
    Please format your PR title in accordance with Conventional Commits.
