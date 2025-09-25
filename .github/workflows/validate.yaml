@@ -32,11 +32,12 @@ jobs:
 
       - uses: ./.github/actions/setup-tools
         with:
-          taplo-cli: true
+          tombi: true
 
       - run: cargo fmt --all -- --check
 
-      - run: taplo fmt --check
+      - run: tombi format --check
+      - run: tombi lint
 
   clippy:
     runs-on: ubuntu-latest
