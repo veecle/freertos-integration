@@ -30,12 +30,9 @@ jobs:
         with:
           components: rustfmt
 
-      - name: Install taplo
-        uses: ./.github/actions/cargo-install-cached
+      - uses: ./.github/actions/setup-tools
         with:
-          tool: taplo-cli
-          binary: taplo
-          version: 0.10.0
+          taplo-cli: true
 
       - run: cargo fmt --all -- --check
 
@@ -109,11 +106,9 @@ jobs:
         with:
           cache-on-failure: true
 
-      - name: Install cargo-docs-rs
-        uses: ./.github/actions/cargo-install-cached
+      - uses: ./.github/actions/setup-tools
         with:
-          tool: cargo-docs-rs
-          version: 0.1.17
+          cargo-docs-rs: true
 
       - run: |
           rm -r .cargo # Remove the environment variables related to FreeRTOS source.
@@ -128,11 +123,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install convco
-        uses: ./.github/actions/cargo-install-cached
+      - uses: ./.github/actions/setup-tools
         with:
-          tool: convco
-          version: 0.6.2
+          convco: true
 
       - name: Check conventional commits
         # We require squash-merge, which means only one commit will be added per PR.

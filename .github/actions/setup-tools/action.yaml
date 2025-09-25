@@ -1,0 +1,79 @@
+inputs:
+  cargo-deny:
+    description: cargo-deny
+    default: "false"
+  cargo-docs-rs:
+    description: cargo-docs-rs
+    default: "false"
+  cargo-llvm-cov:
+    description: cargo-llvm-cov
+    default: "false"
+  convco:
+    description: convco
+    default: "false"
+  taplo-cli:
+    description: taplo-cli
+    default: "false"
+runs:
+  using: composite
+  steps:
+
+    # Cache and install cargo-deny
+    - uses: actions/cache@v4
+      if: inputs.cargo-deny == 'true'
+      id: cache-cargo-deny
+      with:
+        path: ~/.cargo/bin/cargo-deny
+        key: cargo-deny-0.18.4-${{ runner.os }}-${{ runner.arch }}
+    - shell: bash
+      if: inputs.cargo-deny == 'true' && steps.cache-cargo-deny.outputs.cache-hit != 'true'
+      run: |
+        cargo install cargo-deny --version 0.18.4 --locked
+
+    # Cache and install cargo-docs-rs
+    - uses: actions/cache@v4
+      if: inputs.cargo-docs-rs == 'true'
+      id: cache-cargo-docs-rs
+      with:
+        path: ~/.cargo/bin/cargo-docs-rs
+        key: cargo-docs-rs-0.1.17-${{ runner.os }}-${{ runner.arch }}
+    - shell: bash
+      if: inputs.cargo-docs-rs == 'true' && steps.cache-cargo-docs-rs.outputs.cache-hit != 'true'
+      run: |
+        cargo install cargo-docs-rs --version 0.1.17 --locked
+
+    # Cache and install cargo-llvm-cov
+    - uses: actions/cache@v4
+      if: inputs.cargo-llvm-cov == 'true'
+      id: cache-cargo-llvm-cov
+      with:
+        path: ~/.cargo/bin/cargo-llvm-cov
+        key: cargo-llvm-cov-0.6.19-${{ runner.os }}-${{ runner.arch }}
+    - shell: bash
+      if: inputs.cargo-llvm-cov == 'true' && steps.cache-cargo-llvm-cov.outputs.cache-hit != 'true'
+      run: |
+        cargo install cargo-llvm-cov --version 0.6.19 --locked
+
+    # Cache and install convco
+    - uses: actions/cache@v4
+      if: inputs.convco == 'true'
+      id: cache-convco
+      with:
+        path: ~/.cargo/bin/convco
+        key: convco-0.6.2-${{ runner.os }}-${{ runner.arch }}
+    - shell: bash
+      if: inputs.convco == 'true' && steps.cache-convco.outputs.cache-hit != 'true'
+      run: |
+        cargo install convco --version 0.6.2 --locked
+
+    # Cache and install taplo-cli
+    - uses: actions/cache@v4
+      if: inputs.taplo-cli == 'true'
+      id: cache-taplo-cli
+      with:
+        path: ~/.cargo/bin/taplo
+        key: taplo-cli-0.10.0-${{ runner.os }}-${{ runner.arch }}
+    - shell: bash
+      if: inputs.taplo-cli == 'true' && steps.cache-taplo-cli.outputs.cache-hit != 'true'
+      run: |
+        cargo install taplo-cli --version 0.10.0 --locked
