@@ -25,11 +25,9 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@nightly
 
-      - name: Install cargo-llvm-cov
-        uses: ./.github/actions/cargo-install-cached
+      - uses: ./.github/actions/setup-tools
         with:
-          tool: cargo-llvm-cov
-          version: 0.6.19
+          cargo-llvm-cov: true
 
       - run: |
           cargo llvm-cov --workspace --all-features --no-report
