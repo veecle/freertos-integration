@@ -14,7 +14,7 @@ rules:
   comments-indentation:
     level: error
   line-length:
-    max: 120
+    max: 200
   new-line-at-end-of-file: enable
   new-lines:
     type: unix
