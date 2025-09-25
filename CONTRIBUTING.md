@@ -25,6 +25,8 @@ Refer to [the Developer Certificate of Origin GitHub app](https://probot.github.
    - `cargo test` and `cargo clippy` at the workspace root will check Rust code.
    - [`taplo fmt`](https://github.com/tamasfe/taplo) will format `.toml` files.
 2. Commit with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+   We use squash-merge with the PR title and description as commit title and message.
+   Please format your PR title in accordance with Conventional Commits.
 3. Push your branch to your fork and open a Pull Request.
 4. Address feedback from maintainers as needed.
 
