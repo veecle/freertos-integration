@@ -6,8 +6,9 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "cargo"
-    directories:
-      - "**/*"
+    # Only the workspace dependencies need updating.
+    # Workspace members only use workspace dependencies.
+    directory: "/"
     schedule:
       interval: "weekly"
     groups:
