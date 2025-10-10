@@ -52,6 +52,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
+          cache-bin: "false"
           cache-on-failure: true
 
       - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
@@ -67,6 +68,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
+          cache-bin: "false"
           cache-on-failure: true
 
       - run: cargo test --workspace --all-targets --all-features --verbose -- --ignored
@@ -89,6 +91,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
+          cache-bin: "false"
           cache-on-failure: true
 
       - run: cargo doc --workspace --all-features --no-deps
@@ -105,6 +108,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
+          cache-bin: "false"
           cache-on-failure: true
 
       - uses: ./.github/actions/setup-tools
