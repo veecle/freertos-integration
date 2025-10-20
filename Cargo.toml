@@ -21,7 +21,7 @@ cc = { version = "1.2.41", default-features = false }
 futures = { version = "0.3.31", default-features = false }
 libtest-mimic = { version = "0.8.1", default-features = false }
 macro_rules_attribute = { version = "0.2.2", default-features = false }
-regex = { version = "1.12.1", default-features = false }
+regex = { version = "1.12.2", default-features = false }
 similar-asserts = { version = "1.7.0", default-features = false }
 veecle-freertos-integration = { path = "veecle-freertos-integration", default-features = false }
 veecle-freertos-sys = { path = "veecle-freertos-sys", version = "0.1.2", default-features = false }
