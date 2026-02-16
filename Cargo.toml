@@ -17,8 +17,8 @@ license = "MIT"
 anyhow = { version = "1.0.101", default-features = false }
 atomic-waker = { version = "1.1.2", default-features = false }
 bindgen = { version = "0.72.1", default-features = false }
-cc = { version = "1.2.55", default-features = false }
-futures = { version = "0.3.31", default-features = false }
+cc = { version = "1.2.56", default-features = false }
+futures = { version = "0.3.32", default-features = false }
 libtest-mimic = { version = "0.8.1", default-features = false }
 macro_rules_attribute = { version = "0.2.2", default-features = false }
 regex = { version = "1.12.3", default-features = false }
