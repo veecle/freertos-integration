@@ -36,7 +36,7 @@ jobs:
           cargo llvm-cov report --doctests --json --output-path cov.json
           cargo llvm-cov report --doctests --html
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: |
